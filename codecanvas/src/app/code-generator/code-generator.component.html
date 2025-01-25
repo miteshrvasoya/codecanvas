@@ -1,0 +1,67 @@
+<div class="code-generator-container">
+  <!-- Header Section -->
+  <header class="code-gen-header">
+    <h1>AI Code Generator</h1>
+    <p>Generate and preview code components instantly.</p>
+  </header>
+
+  <!-- Input Section -->
+  <div class="code-gen-input-section">
+    <label for="prompt">Enter your prompt:</label>
+    <textarea
+      id="prompt"
+      [(ngModel)]="prompt"
+      placeholder="Describe the UI component you want to generate..."
+    ></textarea>
+    <button class="generate-btn" (click)="generateCode()">Generate Code</button>
+  </div>
+
+  <!-- View Mode Tabs -->
+  <div class="code-gen-tabs">
+    <button 
+      [class.active]="viewMode === 'preview'" 
+      (click)="setViewMode('preview')">Preview UI</button>
+    <button 
+      [class.active]="viewMode === 'code'" 
+      (click)="setViewMode('code')">Code View</button>
+  </div>
+
+  <!-- Code View -->
+  <div *ngIf="viewMode === 'code'" class="code-gen-code-view">
+    <!-- Tabs for Code -->
+    <div class="code-gen-code-tabs">
+      <button 
+        [class.active]="activeTab === 'html'" 
+        (click)="setActiveTab('html')">HTML</button>
+      <button 
+        [class.active]="activeTab === 'css'" 
+        (click)="setActiveTab('css')">CSS</button>
+      <button 
+        [class.active]="activeTab === 'js'" 
+        (click)="setActiveTab('js')">JavaScript</button>
+    </div>
+
+    <!-- Tab Content with Copy Button -->
+    <div class="code-gen-tab-content">
+      <div *ngIf="activeTab === 'html'" class="code-section">
+        <button class="copy-btn" *ngIf="generatedHtml.length" (click)="copyCode(generatedHtml)">Copy</button>
+        <pre><code>{{ generatedHtml }}</code></pre>
+      </div>
+      <div *ngIf="activeTab === 'css'" class="code-section">
+        <button class="copy-btn" *ngIf="generatedCss.length" (click)="copyCode(generatedCss)">Copy</button>
+        <pre><code>{{ generatedCss }}</code></pre>
+      </div>
+      <div *ngIf="activeTab === 'js'" class="code-section">
+        <button class="copy-btn" *ngIf="generatedJs.length" (click)="copyCode(generatedJs)">Copy</button>
+        <pre><code>{{ generatedJs }}</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview UI -->
+  <div *ngIf="viewMode === 'preview'" class="code-gen-preview-section">
+    <div class="code-gen-preview-box">
+      <div #previewContainer></div>
+    </div>
+  </div>
+</div>
