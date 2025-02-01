@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CodeGeneratorComponent } from './code-generator/code-generator.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxSpinnerModule
 ],
   providers: [],
   bootstrap: [AppComponent]

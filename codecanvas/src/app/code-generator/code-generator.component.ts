@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { CodeGeneratorService } from '../shared/services/code-generator.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-code-generator',
@@ -21,7 +22,7 @@ export class CodeGeneratorComponent implements AfterViewChecked {
 
   private isPreviewRendered = false;
 
-  constructor(private codeGeneratorService: CodeGeneratorService) {}
+  constructor(private codeGeneratorService: CodeGeneratorService, private spinner: NgxSpinnerService) {}
 
   ngAfterViewChecked() {
     // Ensure the preview is rendered when switching back to "Preview" mode
@@ -36,12 +37,15 @@ export class CodeGeneratorComponent implements AfterViewChecked {
       return;
     }
 
+    this.spinner.show();
+
     this.codeGeneratorService.generateCode(this.prompt).subscribe({
       next: (response: any) => {
         const text = response?.html?.response?.candidates[0]?.content?.parts[0]?.text || '';
         this.extractCode(text);
         if (this.viewMode === 'preview') {
           this.renderPreview();
+          this.spinner.hide();
         }
       },
       error: (err) => {

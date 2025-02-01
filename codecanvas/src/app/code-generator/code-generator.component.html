@@ -18,11 +18,11 @@
 
   <!-- View Mode Tabs -->
   <div class="code-gen-tabs">
-    <button 
-      [class.active]="viewMode === 'preview'" 
+    <button
+      [class.active]="viewMode === 'preview'"
       (click)="setViewMode('preview')">Preview UI</button>
-    <button 
-      [class.active]="viewMode === 'code'" 
+    <button
+      [class.active]="viewMode === 'code'"
       (click)="setViewMode('code')">Code View</button>
   </div>
 
@@ -30,14 +30,14 @@
   <div *ngIf="viewMode === 'code'" class="code-gen-code-view">
     <!-- Tabs for Code -->
     <div class="code-gen-code-tabs">
-      <button 
-        [class.active]="activeTab === 'html'" 
+      <button
+        [class.active]="activeTab === 'html'"
         (click)="setActiveTab('html')">HTML</button>
-      <button 
-        [class.active]="activeTab === 'css'" 
+      <button
+        [class.active]="activeTab === 'css'"
         (click)="setActiveTab('css')">CSS</button>
-      <button 
-        [class.active]="activeTab === 'js'" 
+      <button
+        [class.active]="activeTab === 'js'"
         (click)="setActiveTab('js')">JavaScript</button>
     </div>
 
@@ -65,3 +65,5 @@
     </div>
   </div>
 </div>
+
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
