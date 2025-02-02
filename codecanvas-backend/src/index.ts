@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 // Middleware
-app.use(rateLimiter(5, 60)); // 5 requests per 60 seconds
+// app.use(rateLimiter(5, 60)); // 5 requests per 60 seconds
 
 
 app.use('/api/generate', generateRoutes);
