@@ -12,9 +12,31 @@
       <div class="code-gen-input-section">
         <label for="prompt">Enter your prompt:</label>
         <textarea id="prompt" [(ngModel)]="prompt" placeholder="Describe the UI component..."></textarea>
+
+        <label for="cssFramework">Select CSS Framework:</label>
+        <select id="cssFramework" [(ngModel)]="cssFramework">
+          <option value="Tailwind CSS">Tailwind CSS</option>
+          <option value="Bootstrap">Bootstrap</option>
+          <option value="Vanilla CSS">Vanilla CSS</option>
+        </select>
+
+        <label for="jsFramework">Select JavaScript Framework:</label>
+        <select id="jsFramework" [(ngModel)]="jsFramework">
+          <option value="Plain JavaScript">Plain JavaScript</option>
+          <option value="Angular">Angular</option>
+          <option value="React">React</option>
+        </select>
+
+        <label for="complexity">Select Complexity:</label>
+        <select id="complexity" [(ngModel)]="complexity">
+          <option value="Basic">Basic</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+
         <button class="generate-btn" (click)="generateCode()">Generate Code</button>
       </div>
     </div>
+
 
     <!-- Right Section: Preview and Code -->
     <div class="code-gen-output-section">

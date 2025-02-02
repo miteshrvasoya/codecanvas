@@ -24,11 +24,13 @@
 /* Left Section - Chat */
 .code-gen-chat-section {
   width: 25%;
-  height: 100%;
+  height: 95vh;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header */
@@ -62,7 +64,7 @@
 
 #prompt {
   width: 100%;
-  height: 70vh;
+  height: 50vh;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -71,9 +73,18 @@
   margin-bottom: 10px;
 }
 
+.code-gen-input-section select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
 .generate-btn {
   width: 100%;
   padding: 10px;
+  margin: 20px auto 10px auto;
   font-size: 14px;
   color: #fff;
   background-color: #007bff;

@@ -12,6 +12,9 @@ import {NgxSpinnerService} from 'ngx-spinner';
 
 export class CodeGeneratorComponent implements AfterViewChecked {
   prompt: string = '';
+  cssFramework: string = 'Tailwind CSS';  // Default CSS framework
+  jsFramework: string = 'Plain JavaScript'; // Default JS framework
+  complexity: string = 'Basic'; // Default Complexity level
   generatedHtml: string = '';
   generatedCss: string = '';
   generatedJs: string = '';
@@ -39,18 +42,23 @@ export class CodeGeneratorComponent implements AfterViewChecked {
 
     this.spinner.show();
 
-    this.codeGeneratorService.generateCode(this.prompt).subscribe({
+    // Construct detailed prompt for AI
+    const fullPrompt = `Generate a ${this.complexity.toLowerCase()} UI component using ${this.cssFramework} and ${this.jsFramework}.
+    Description: ${this.prompt}`;
+
+    this.codeGeneratorService.generateCode(fullPrompt).subscribe({
       next: (response: any) => {
         const text = response?.html?.response?.candidates[0]?.content?.parts[0]?.text || '';
         this.extractCode(text);
         if (this.viewMode === 'preview') {
           this.renderPreview();
-          this.spinner.hide();
         }
+        this.spinner.hide();
       },
       error: (err) => {
         console.error('Error generating code:', err);
         alert('An error occurred. Please try again.');
+        this.spinner.hide();
       },
     });
   }
@@ -80,8 +88,6 @@ export class CodeGeneratorComponent implements AfterViewChecked {
 
   setViewMode(mode: 'code' | 'preview') {
     this.viewMode = mode;
-
-    // Reset the preview render flag when switching tabs
     if (mode === 'preview') {
       this.isPreviewRendered = false;
     }
