@@ -134,6 +134,7 @@
 
 /* Code View */
 .code-gen-code-view {
+  height: fit-content;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
@@ -165,6 +166,7 @@
 
 /* Code Sections */
 .code-gen-tab-content .code-section {
+  height: fit-content;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
@@ -192,7 +194,9 @@
 pre {
   background-color: #2b2b2b;
   padding: 15px;
+  height: 70vh;
   border-radius: 6px;
   overflow-x: auto;
+  overflow-y: scroll;
   color: white;
 }
